@@ -33,7 +33,7 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <header className="fixed-header">
       <div className="header-content">
         <div className="titles">
           <a
@@ -51,53 +51,56 @@ const Header = () => {
           </a>
         </div>
 
-        <div className="accessibility-container">
-          <div className="accessibility-toggle" onClick={toggleAccessibility}>
-            <img
-              src={`${process.env.PUBLIC_URL}/img/icono-accesibilidad.png`}
-              alt="icono accesibilidad"
-            />
-            <span>Accesibilidad</span>
+        <div className="header-right">
+          <div className="accessibility-container">
+            <div className="accessibility-toggle" onClick={toggleAccessibility}>
+              <img
+                src={`${process.env.PUBLIC_URL}/img/icono-accesibilidad.png`}
+                alt="icono accesibilidad"
+              />
+              <span>Accesibilidad</span>
+              <img
+                src={`${process.env.PUBLIC_URL}/img/${
+                  accessibilityOpen ? "flecha-arriba.png" : "flecha-abajo.png"
+                }`}
+                alt="Accesibilidad"
+              />
+            </div>
+            {accessibilityOpen && (
+              <div className="accessibility-content show">
+                <h4>Tamaño de letra</h4>
+                <button onClick={decreaseFontSize}>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/img/icono-menos.png`}
+                    alt="Disminuir tamaño"
+                  />
+                </button>
+                <button onClick={increaseFontSize}>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/img/icono-mas.png`}
+                    alt="Aumentar tamaño"
+                  />
+                </button>
+                <button onClick={resetFontSize}>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/img/icono-actualiza.png`}
+                    alt="Restablecer tamaño"
+                  />
+                </button>
+              </div>
+            )}
+          </div>
+
+          <div className="menu-toggle" onClick={toggleMenu}>
             <img
               src={`${process.env.PUBLIC_URL}/img/${
-                accessibilityOpen ? "flecha-arriba.png" : "flecha-abajo.png"
+                menuOpen ? "menu-toggle2.png" : "menu-toggle.png"
               }`}
-              alt="Accesibilidad"
+              alt="Menu Toggle"
             />
           </div>
-          {accessibilityOpen && (
-            <div className="accessibility-content show">
-              <h4>Tamaño de letra</h4>
-              <button onClick={decreaseFontSize}>
-                <img
-                  src={`${process.env.PUBLIC_URL}/img/icono-menos.png`}
-                  alt="Disminuir tamaño"
-                />
-              </button>
-              <button onClick={increaseFontSize}>
-                <img
-                  src={`${process.env.PUBLIC_URL}/img/icono-mas.png`}
-                  alt="Aumentar tamaño"
-                />
-              </button>
-              <button onClick={resetFontSize}>
-                <img
-                  src={`${process.env.PUBLIC_URL}/img/icono-actualiza.png`}
-                  alt="Restablecer tamaño"
-                />
-              </button>
-            </div>
-          )}
         </div>
 
-        <div className="menu-toggle" onClick={toggleMenu}>
-          <img
-            src={`${process.env.PUBLIC_URL}/img/${
-              menuOpen ? "menu-toggle2.png" : "menu-toggle.png"
-            }`}
-            alt="Menu Toggle"
-          />
-        </div>
         {menuOpen && (
           <div className="menu-content">
             <div className="menu-item" onClick={() => setMenuOpen(false)}>
@@ -116,7 +119,7 @@ const Header = () => {
               <a href="/capitulo4">Capítulo 4: Secretos en el Aire</a>
             </div>
             <div className="menu-item" onClick={() => setMenuOpen(false)}>
-              <a href="/capitulo4">Capítulo 5: Título</a>
+              <a href="/capitulo5">Capítulo 5: Título</a>
             </div>
           </div>
         )}

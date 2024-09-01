@@ -21,11 +21,19 @@ const Main = () => {
 
   return (
     <div className="main-container">
-      <img
-        src={`${process.env.PUBLIC_URL}/img/portada.png`}
+      <video controls autoPlay muted loop className="main-video">
+        <source
+          src={`${process.env.PUBLIC_URL}/img/video-libro.mp4`}
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+      {/* <img
+        src={`${process.env.PUBLIC_URL}/img/video_portada.mp4`}
+        type="video/mp4"
         alt="Infierno Escarlata"
         className="main-image"
-      />
+      /> */}
       <h1>Infierno Escarlata</h1>
       <h3>Libro elaborado con 🫀 por el Club de la IA</h3>
       <button className="next-button" onClick={goToNextChapter}>
